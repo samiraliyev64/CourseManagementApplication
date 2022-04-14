@@ -70,9 +70,48 @@ namespace CourseManagementApplication
                     switch (category)
                     {
                         case Category.Programming:
-                            Console.Write("Qrupun yeni nomresi : ");
-                            Bp = Convert.ToInt32(Console.ReadLine());
+                            Console.Write("Hansi qrupun nomresin deyiwmek isteyirsiniz : ");
+                            string noInput = Console.ReadLine();
+                            bool isExist = false;
+                            bool isExist2 = false;
+                            foreach (var item in groupsList)
+                            {
+                                if(item.No == noInput)
+                                {
+                                    Console.Write("Qrupun yeni nomresi : ");
+                                    Bp = Convert.ToInt32(Console.ReadLine());
+                            
+                                    foreach (var group in groupsList)
+                                    {
+                                        if(group.No == $"BP{Bp}")
+                                        {
+                                            isExist2 = true; 
+                                        }
+                                    }
+                                    if(isExist2 == true)
+                                    {
+                                        Console.WriteLine("bele bir qrup artiq var");
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        item.No = $"BP{Bp}";
+                                    }
+                                    
+                                    isExist = true;
+                                    break;
+                                }
+                            }
+                            if (isExist2 == true)
+                            {
+                                break;
+                            }
+                            if (isExist == false)
+                            {
+                                Console.WriteLine("daxil etdiyiniz input qrup listinde yoxdur ");
+                            }
                             break;
+
                         case Category.Design:
                             Console.Write("Qrupun yeni nomresi : ");
                             Dn = Convert.ToInt32(Console.ReadLine());
