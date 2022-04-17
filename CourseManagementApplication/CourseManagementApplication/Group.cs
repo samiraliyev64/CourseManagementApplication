@@ -11,7 +11,10 @@ namespace CourseManagementApplication
         public Category category;
         public bool isOnline;
         public int Limit;
+        public int StuCount;
         public static List<Group> groupsList = new List<Group>();
+
+
         public static List<Student> studentsList = new List<Student>();
         
         public static List<Student> programmingStudentsList = new List<Student>();
@@ -52,10 +55,12 @@ namespace CourseManagementApplication
             if(isOnline == true)
             {
                 Limit = 15;
+                studentsList = new List<Student>(Limit);
             }
             else
             {
                 Limit = 10;
+                studentsList = new List<Student>(Limit);
             }
         }
 
